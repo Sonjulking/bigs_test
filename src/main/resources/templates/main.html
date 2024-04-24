@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>날씨 자료 조회 및 입력</title>
+
+</head>
+<body>
+<!--<a th:href="@{/weather}">
+  <button id="search">조회</button>
+</a>-->
+<button id="search">저장된 날씨 자료 조회</button>
+<h4>저장하고 싶은 날씨의 날짜를 입력해주세요.</h4>
+<form th:action="@{/weather}" method="post">
+  <label for="date">date:</label>
+  <!--<input type="text" id="date" name="date"/>-->
+  <input type="DATE" id="date" name="date"/>
+  <button type="submit">입력</button>
+</form>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $("#search").click(function () {
+      $.ajax({
+        url: "/weather",
+        method: "GET",
+        success: function (data, textStatus, xhr) {
+          if (xhr.status === 204) { //자료가 없어서 204에러 났을 때
+            alert("자료가 없습니다.");
+          } else { //자료가 있을때
+            window.location = '/weather';
+          }
+        },
+        error: function () {
+          console.error("에러 났습니다.");
+        }
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

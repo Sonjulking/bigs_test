@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>날씨 자료 조회</title>
+</head>
+<body>
+<h2>날씨 자료 조회</h2>
+<table border='1'>
+  <thead>
+  <tr>
+    <th>index</th>
+    <th>baseTime</th>
+    <th>baseDate</th>
+    <th>category</th>
+    <th>fcstDate</th>
+    <th>fcstTime</th>
+    <th>nx</th>
+    <th>ny</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <tr th:each="list: ${list}">
+    <td th:text="${list.id}"></td>
+    <td th:text="${list.baseTime}"></td>
+    <td th:text="${list.baseDate}"></td>
+    <td th:text="${list.category}"></td>
+    <td th:text="${list.fcstDate}"></td>
+    <td th:text="${list.fcstTime}"></td>
+    <td th:text="${list.nx}"></td>
+    <td th:text="${list.ny}"></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>
